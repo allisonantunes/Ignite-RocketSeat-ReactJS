@@ -7,13 +7,6 @@ import { useState } from 'react'
 
 
 export function Post({author, puplishedAt, content}) {
-    // estado = variavel que eu quero que o componente monitore
-    // setCommentsseria uma funcao para o react saber quando eu altero o valor da variavel
-
-    const [comments, setComments] = useState([
-        1,
-        2
-    ])
 
     const publishedDateFormatted = format(
         puplishedAt, "dd 'de' LLLL 'as' HH:mm'h'", 
@@ -25,13 +18,24 @@ export function Post({author, puplishedAt, content}) {
             locale: ptBR,
             addSuffix: true,
         })
+    
+    const [comments, setComments] = useState([
+        'Post muito bacana heim'
+    ])
+
+    const [newCommentText, setNewCommentText,] = useState('')
+
     function handleCreateNewComment() {
         event.preventDefault()
-        // ...comments vai copiar os comentarios atual e depois com o setcomments vai add mais um ao array
-        setComments([...comments, comments.length + 1])
+
+        setComments([...comments, newCommentText])
+        setNewCommentText('') // limpar a text area
     }
 
-    
+    function handleNewCommentChange() {
+        setNewCommentText(event.target.value)
+    }
+
     return(
         <article className={Styles.post}>
             <header>
@@ -64,8 +68,12 @@ export function Post({author, puplishedAt, content}) {
 
             <form onSubmit={handleCreateNewComment} className={Styles.comentForm}>
                 <strong>Deixe seu feedback</strong>
-                <textarea placeholder='Deixe um comentario'/>
-               
+                <textarea 
+                    name='comment' 
+                    placeholder='Deixe um comentario'
+                    value={newCommentText} // limpar a text area
+                    onChange={handleNewCommentChange}
+                />
                 <footer>
                     <button type='submit'>Publicar</button>
                 </footer>
@@ -74,7 +82,7 @@ export function Post({author, puplishedAt, content}) {
             <div className={Styles.commentList}>
                 {comments.map(comment => {
                     return (
-                        <Comment />
+                        <Comment content={comment} />
                     )
                 })}
             </div>
