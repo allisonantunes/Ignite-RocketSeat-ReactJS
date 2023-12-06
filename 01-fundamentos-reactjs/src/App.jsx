@@ -13,7 +13,7 @@ const posts = [
   {
     id: 1,
     author: {
-      avatar_url: 'github.com/allisonantunes.png',
+      avatarUrl: 'github.com/allisonantunes.png',
       name: 'Allison',
       role: 'student Dev'
     },
@@ -28,7 +28,7 @@ const posts = [
   {
     id: 2,
     author: {
-      avatar_url: 'github.com/maykbrito.png',
+      avatarUrl: 'github.com/maykbrito.png',
       name: 'Mayk brito',
       role: 'Educator @RocketSeat'
     },
@@ -38,7 +38,7 @@ const posts = [
       { type: 'link', content: '👉jane.design/doctorcare'},
       { type: '#', content: ['#novoprojeto', '#nlw', '#rocketseat']}
     ],
-    puplishedAt: new Date('2023-10-05 18:00:00')
+    puplishedAt: new Date('2023-10-04 18:00:00')
   },
 ]
 
