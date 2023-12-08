@@ -7,7 +7,10 @@ export function Comment({ content, onDeleteComment }) {
     const [linkeCount, setlinkeCount] = useState(0)
 
     function handleLikeComment() {
-        setlinkeCount(linkeCount + 1)
+        setlinkeCount((state) => {
+            return state + 1
+        })
+        // setlinkeCount(linkeCount + 1)
     }
     function handleDeleteComment() {
         onDeleteComment(content)
