@@ -14,20 +14,24 @@ interface Content {
     type: 'paragraph' | 'link';
     content: string;
 }
-interface PostProps {
+export interface PostType {
+    id: number;
     author: Author;
     puplishedAt: Date;
     content: Content[];
 }
+interface PostProps {
+    post: PostType;
+}
 
-export function Post({author, puplishedAt, content}: PostProps) {
+export function Post({post}: PostProps) {
 
     const publishedDateFormatted = format(
-        puplishedAt, "dd 'de' LLLL 'as' HH:mm'h'", 
+        post.puplishedAt, "dd 'de' LLLL 'as' HH:mm'h'", 
         {locale: ptBR}
         )
     const publishedDateRelativeToNow = formatDistanceToNow(
-        puplishedAt, 
+        post.puplishedAt, 
         {
             locale: ptBR,
             addSuffix: true,
@@ -57,7 +61,7 @@ export function Post({author, puplishedAt, content}: PostProps) {
 
     function deleteComment(commentToDelete: string) {
         const commentsWithoutDeletedOne = comments.filter(comment => {
-            return comment ==! commentToDelete
+            return comment != commentToDelete
         })
         setComments(commentsWithoutDeletedOne)
     }
@@ -68,20 +72,20 @@ export function Post({author, puplishedAt, content}: PostProps) {
         <article className={Styles.post}>
             <header>
                 <div className={Styles.author}>
-                    <Avatar src={author.avatarUrl} />
+                    <Avatar src={post.author.avatarUrl} />
                     <div className={Styles.authorInfo}>
-                        <strong>{author.name}</strong>
-                        <span>{author.role}</span>
+                        <strong>{post.author.name}</strong>
+                        <span>{post.author.role}</span>
                     </div>
                 </div>
 
-                <time title={publishedDateFormatted} dateTime={puplishedAt.toISOString()}>
+                <time title={publishedDateFormatted} dateTime={post.puplishedAt.toISOString()}>
                     {publishedDateRelativeToNow}
                 </time>
             </header>
 
             <div className={Styles.content}>
-                {content.map(line => {
+                {post.content.map(line => {
                     if(line.type === 'paragraph') {
                         return (
                             <p key={line.content}>{line.content}</p>
