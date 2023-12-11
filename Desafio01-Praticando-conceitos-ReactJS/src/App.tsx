@@ -1,6 +1,12 @@
+import { Input } from "./Input"
+import { Task } from "./Task"
+
 function App() {
   return (
-    <p>olá</p>
+    <div>
+      <Input />
+      <Task />
+    </div>
   )
 }
 
