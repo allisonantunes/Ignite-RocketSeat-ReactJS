@@ -1,4 +1,4 @@
-.task {
+.tasks {
     background: var(--gray-500);
     color: var(--gray-100);
     font-size: 1.4rem;
@@ -10,7 +10,8 @@
 
     padding: 1.6rem;
 
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 20fr 1fr;
     gap: 1.6rem;
     align-items: center;
 }

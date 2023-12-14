@@ -1,12 +1,20 @@
 import styles from './Task.module.css'
 
+export interface TaskType {
+    id: number;
+    task: []
+}
+interface TaskProps {
+    task: TaskType;
+}
 
-export function Task() {
+
+
+export function Task({task}: TaskProps) {
     return(
-        <div className={styles.task}>
+        <div className={styles.tasks}>
             <img src="../../public/bolinha.svg" alt="" />
-            
-                Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.
+            {task.task}
             <img src="../../public/lixeira.svg" alt="" />
         </div>
 
