@@ -1,7 +1,4 @@
-/* import { Input } from "./Input"
-import { Button } from "./Button" */
-import { ChangeEvent, ChangeEventHandler, FormEvent, useState } from "react"
-import { Task, TaskType } from "./Task"
+import { ChangeEvent, FormEvent, useState } from "react"
 import styles from './styles.module.css'
 
 
@@ -20,21 +17,12 @@ function App() {
     setNewTasksText('')
   }
 
-  function handleNewTask(event: ChangeEvent) {
+  function handleNewTask(event: ChangeEvent<HTMLInputElement>) {
 
     console.log(newTasksText);
     
     setNewTasksText(event.target.value)
   }
-
-
-/*   const tasks: TaskType[] = [
-   { 
-    id: 1,
-    task: []
-  },
-
-  ] */
 
   return (
     <div>
