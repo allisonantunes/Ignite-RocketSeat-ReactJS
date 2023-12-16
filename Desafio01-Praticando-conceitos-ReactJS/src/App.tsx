@@ -1,23 +1,31 @@
-import { ChangeEvent, FormEvent, useState } from "react"
+/* import { Input } from "./Input"
+import { Button } from "./Button" */
+import { ChangeEvent, ChangeEventHandler, FormEvent, useState } from "react"
+import { Task, TaskType } from "./Task"
 import styles from './styles.module.css'
+import { Button } from "./Button"
 
 
 function App() {
+  // estado para pegar o valor input
+  const [inputTask, setInputTask] = useState<string>('')
+  // estado para pegar o array resultante
+  const [tasks, setTask] = useState<string[]>(['oi'])
 
-  const [newTasksText, setNewTasksText] = useState('')
-
-  const [tasks, setTask] = useState([
-    'task'
-  ])
-
-  function handleCreateTask(event: FormEvent){
+  function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
+    setInputTask(event.target.value)
+  }
+  
+  // funcao para o envio do form
+  function handleFormSubmit(event: FormEvent){
     event.preventDefault()
-    
-    setTask([...tasks, newTasksText])
-    setNewTasksText('')
+
+    setTask([...tasks, inputTask])
+
+    setInputTask('')
   }
 
-  function handleNewTask(event: ChangeEvent<HTMLInputElement>) {
+  function handleNewTask(event: ChangeEvent) {
 
     console.log(newTasksText);
     
@@ -31,20 +39,16 @@ function App() {
         <h1>to<span>do</span></h1>
       </header>
 
-      <form onSubmit={handleCreateTask}>
+      <form onSubmit={handleFormSubmit}>
         <input 
-          onChange={handleNewTask}
+          onChange={handleInputChange}
           className={styles.input}
-          type="text" 
+          value={inputTask}
+          type="text"
+          required
           placeholder='Adicione uma nova tarefa'
         />
-
-        <button 
-            className={styles.button}
-            >
-            Criar
-            <img src="../../public/plus.svg" alt="" />
-        </button>
+        <Button />
         </form>
 
       <div className={styles.page}>
@@ -53,13 +57,14 @@ function App() {
           <h3>Concluidas <span>2 de 5</span></h3>
         </div>
 
-        <div className={styles.tasks}>
-            <img src="../../public/bolinha.svg" alt="" />
-            {tasks.map(task => {
-              return task
+        {tasks.map(task => {
+              return (
+                <Task 
+                task={task}
+                
+                />
+                )
             })}
-            <img src="../../public/lixeira.svg" alt="" />
-        </div>
           
       </div>
     </div>

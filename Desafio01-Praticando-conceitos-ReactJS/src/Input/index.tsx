@@ -5,12 +5,13 @@ import { Button } from '../Button';
 
 export function Input() {
     return(
-        <form>
         <input 
-        className={styles.input}
-        type="text" 
-        placeholder='Adicione uma nova tarefa'
+          onChange={handleInputChange}
+          className={styles.input}
+          value={inputTask}
+          type="text"
+          required
+          placeholder='Adicione uma nova tarefa'
         />
-        </form>
     )
 }
