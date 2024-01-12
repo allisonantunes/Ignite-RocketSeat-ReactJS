@@ -1,0 +1,2 @@
+arrumar cod
+npx eslint src --ext .ts,.tsx --fix
