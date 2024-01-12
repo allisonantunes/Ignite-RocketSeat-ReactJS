@@ -13,7 +13,7 @@ export function History() {
               <th>Duração</th>
               <th>Inicio</th>
               <th>
-                <Status statusColor='green'>Concluido</Status>
+                <Status statusColor="green">Concluido</Status>
               </th>
             </tr>
           </thead>
