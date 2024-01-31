@@ -16,8 +16,9 @@ export const SearchFormContainer = styled.form`
         color: ${props => props.theme["gray-500"]};
 
     }
-
-    button {
+}
+`
+export const ButtonForm = styled.button`
         display: flex;
         align-items: center;
         gap: 0.75rem;
@@ -36,6 +37,4 @@ export const SearchFormContainer = styled.form`
             color: ${props => props.theme["white"]};
             transition: background-color 0.2s, color 0.2s, border-color 0.2s;
         }
-    }
-}
 `
