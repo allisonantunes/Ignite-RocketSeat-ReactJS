@@ -1,20 +1,36 @@
 {
-    "transactions": [
-        {
-            "id": 1,
-            "description": "Desenvolvimento de site",
-            "type": "income",
-            "category": "Venda",
-            "price": 14000,
-            "createAt": "2024-01-31T14:37:32.595Z"
-        },
-        {
-            "id": 2,
-            "description": "hamburger",
-            "type": "outcome",
-            "category": "alimentação",
-            "price": 50,
-            "createAt": "2024-01-31T14:37:32.595Z"
-        }
-    ]
+  "transactions": [
+    {
+      "id": "1",
+      "description": "Desenvolvimento de site",
+      "type": "income",
+      "category": "Venda",
+      "price": 14000,
+      "createAt": "2024-01-31T14:37:32.595Z"
+    },
+    {
+      "id": "2",
+      "description": "hamburger",
+      "type": "outcome",
+      "category": "alimentação",
+      "price": 50,
+      "createAt": "2024-01-31T14:37:32.595Z"
+    },
+    {
+      "id": "7c01",
+      "description": "s",
+      "price": 11,
+      "category": "dd",
+      "type": "income",
+      "createAt": "2024-02-02T13:40:16.663Z"
+    },
+    {
+      "id": "bffd",
+      "description": "Desenvolvimento Web Completo 2023 - 20 cursos + 20 projetos",
+      "price": 2222,
+      "category": "dev",
+      "type": "income",
+      "createAt": "2024-02-02T13:40:28.344Z"
+    }
+  ]
 }
