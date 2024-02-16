@@ -6,9 +6,13 @@ import { Label } from '@/components/ui/label'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { toast } from 'sonner'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
+import { useMutation } from '@tanstack/react-query'
+import { signIn } from '@/api/sign-in'
 
 export function SignIn() {
+  const [searchParams] = useSearchParams()
+
   const signInForm = z.object({
     email: z.string().email(),
   })
@@ -18,11 +22,17 @@ export function SignIn() {
     register,
     handleSubmit,
     formState: { isSubmitting },
-  } = useForm<SignInForm>()
+  } = useForm<SignInForm>({
+    defaultValues: { email: searchParams.get('email') ?? '' },
+  })
+
+  const { mutateAsync: authenticate } = useMutation({
+    mutationFn: signIn,
+  })
 
   async function handleSignIn(data: SignInForm) {
     try {
-      await console.log(data)
+      await authenticate({ email: data.email })
       toast.success('Enviamos um link de autenticação para seu e-mail', {
         action: {
           label: 'Reenviar',
