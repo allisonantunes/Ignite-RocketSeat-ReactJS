@@ -38,7 +38,21 @@ export function CalendarStep({ onSelectDateTime }: CalendarStepProps) {
     ? dayjs(selectedDate).format('YYYY-MM-DD')
     : null
 
-  const { data: availability } = useQuery<Availability>(
+  const { data: availability } = useQuery<Availability>({
+    queryKey: ['availability', selectedDateWithoutTime],
+    queryFn: async () => {
+      const response = await api.get(`/users/${username}/availability`, {
+        params: {
+          date: selectedDateWithoutTime,
+        },
+      })
+
+      return response.data
+    },
+    enabled: !!selectedDate,
+  })
+
+  /*   const { data: availability } = useQuery<Availability>(
     ['availability', selectedDateWithoutTime],
     async () => {
       const response = await api.get(`/users/${username}/availability`, {
@@ -52,7 +66,7 @@ export function CalendarStep({ onSelectDateTime }: CalendarStepProps) {
     {
       enabled: !!selectedDate,
     },
-  )
+  ) */
 
   function handleSelectTime(hour: number) {
     const dateWithTime = dayjs(selectedDate)

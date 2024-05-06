@@ -100,13 +100,14 @@ export default function TimeIntervals() {
 
   const intervals = watch('intervals')
 
-  /* async function handleSetTimeIntervals({
+  /*   async function handleSetTimeIntervals({
     intervals,
   }: TimeIntervalsFormOutput) {
     await api.post('/users/time-intervals', { intervals })
 
     await router.push('/register/update-profile')
   } */
+
   async function handleSetTimeIntervals(data: any) {
     const { intervals } = data as TimeIntervalsFormOutput
 
